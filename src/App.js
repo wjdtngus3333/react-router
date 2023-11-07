@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+
+
+// function App() {
+//   return (
+//
+//   <BrowserRouter>
+//     <Routes>
+//       <Route>
+//         <Route pate="/" element={ <Layout/> }>
+//             <Route index element={ <Main/> }/>
+//             <Route path="movie" element={ <MovieList/> }/>
+//       </Route>
+//     </Routes>
+//   </BrowserRouter>
+//   );
+// }
+//
+// export default App;
+
 import './App.css';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Layout from "./layouts/Layout";
+import Main from "./pages/Main";
+import MovieList from "./pages/MovieList";
+import MovieDetail from "./pages/MovieDetail";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={ <Layout/> }>
+                    <Route index element={ <Main/> }/>
+                        <Route path="movie" >
+                            <Route index element={ <MovieList/> }/>
+                            <Route path=":movieCd" element={ <MovieDetail/>}/>
+                        </Route>
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
+
+
+
+
+
